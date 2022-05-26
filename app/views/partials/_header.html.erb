@@ -6,6 +6,8 @@
   </div>
   <div class="flex items-center">
     <p class='text-white p-2'>Settings</p> 
-    <p class='text-white p-2'>Logout</p>  
+    <p class='text-white p-2'>
+      <%= link_to "Sign Out", destroy_employee_session_path, method: :delete %>
+    </p>  
   </div>
 </header>
