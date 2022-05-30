@@ -4,50 +4,50 @@
     <h1 class='text-xl text-white'>Admittance</h1> 
     
     <div class='flex flex-col justify-center items-center mt-4 mb-2'>
-      <%= form_with class:"w-full text-white" do |form| %>
+      <%= form_with model: @customer, class: "w-full text-white" do |form| %>
           <div class='flex flex-col mx-20 w-100'>
 
             <div class="flex items-center w-full">
               <div class="w-1/2">
-                <%= form.label :query, "Plate Number:", class: "w-full"%>
+                <%= form.label :plate_number, "Plate Number:", class: "w-full"%>
               </div>
               <div class="w-1/2">
-                <%= form.text_field :query, class: "w-full rounded-xl" %>
+                <%= form.text_field :plate_number, class: "w-full rounded-xl text-black" %>
               </div>
             </div>
           
             <div class="flex items-center w-full mt-1">
               <div class="w-1/2">
-              <%= form.label :query, "Vehicle Type: " %>
+              <%= form.label :vehicle_type, "Vehicle Type: " %>
               </div>
               <div class="w-1/2 text-black">
-                <%= form.select :query, ['Sedan', 'SUVs', 'Trucks', 'Motorcycles'], class: "w-full rounded-xl" %>
+                <%= form.select :vehicle_type, ['Sedan', 'SUVs', 'Trucks', 'Motorcycles'], class: "w-full rounded-xl" %>
               </div>
             </div>
             
             <div class="flex items-center w-full py-3">
               <div class='w-1/2'>
-                <%= form.label :query, "Client Type: " %>
+                <%= form.label :client_type, "Client Type: " %>
               </div>
 
               <div class='flex justify-between w-1/2'>
                 <div>
-                  <%= form.radio_button :query, 'vip' %>
-                  <%= form.label :query, 'VIP' %>
+                  <%= form.radio_button :client_type, 'vip' %>
+                  <%= form.label :client_type, 'VIP' %>
                 </div>
                 <div>
-                  <%= form.radio_button :query, 'regular' %>
-                  <%= form.label :query, 'Regular' %>
+                  <%= form.radio_button :client_type, 'regular' %>
+                  <%= form.label :client_type, 'Regular' %>
                 </div>
               </div>
             </div>
 
             <div class="flex items-center py-3">
               <div class="w-1/2">
-                <%= label_tag(:query, "Overnight Parking:") %>          
+                <%= form.label(:overnight, "Overnight Parking:") %>          
               </div>
               <div class="flex justify-start w-1/2">
-                <%= check_box_tag(:query) %>
+                <%= form.check_box(:overnight) %>
               </div>
             </div>
 
@@ -77,8 +77,8 @@
               <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'>0</p>
             </span>
             <span>
-              <%= link_to "Confirm Parking", admit_path, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
-              <%= link_to "Cancel", dashboard_index_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+              <%= form.submit "Confirm Parking", class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+              <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
             </span>
           </div>
       <% end %>

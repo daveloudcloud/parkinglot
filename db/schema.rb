@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_26_122623) do
+ActiveRecord::Schema.define(version: 2022_05_30_103842) do
 
   create_table "customers", force: :cascade do |t|
     t.string "plate_number"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2022_05_26_122623) do
     t.string "reference_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "overnight"
+    t.string "client_type"
   end
 
   create_table "employees", force: :cascade do |t|
