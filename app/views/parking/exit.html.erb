@@ -1,0 +1,53 @@
+<div class="flex flex-col w-full justify-center items-center">
+  <div class='flex flex-col bg-blue-500 w-2/5 mt-36 text-center p-20 rounded-md shadow-2xl'>
+    <h1 class='text-4xl text-white'>Parking Lot App</h1> 
+    <h1 class='text-xl text-white'>Exit</h1> 
+    
+    <div class='flex flex-col justify-center items-center mt-4 mb-2'>
+      <%= form_with class:"w-full text-white" do |form| %>
+          <div class='flex flex-col mx-20 w-100'>
+
+            <div class="flex items-center w-full">
+              <div class="w-1/2">
+                <%= form.label :query, "Reference ID:", class: "w-full"%>
+              </div>
+              <div class="w-1/2">
+                <%= form.text_field :query, class: "w-full rounded-xl" %>
+              </div>
+            </div>
+          
+            <div class="flex flex-col py-3">
+              <div class='flex'>
+                <div class='w-1/2'>
+                  <p>Current Date:</p>
+                </div>
+                <div class='flex justify-start w-1/2'>
+                  <%= Date.today.to_s(:long) %>
+                </div>
+              </div>
+              <div class='flex'>
+                <div class='w-1/2'>
+                  <p>Current Time:</p>
+                </div>
+                <div class='flex justify-start w-1/2'>
+                  <%= Time.now.strftime("%I:%M:%S %Z %z") %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center mt-8">
+            <span class='flex justify-center items-center mt-1'>
+              <h2 class='text-2xl text-white mr-3'>Available Slots:</h2> 
+              <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'>0</p>
+            </span>
+            <span>
+              <%= link_to "Retrieve", admit_path, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+              <%= link_to "Cancel", dashboard_index_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+            </span>
+          </div>
+      <% end %>
+    </div>
+    
+   </div>
+</div>

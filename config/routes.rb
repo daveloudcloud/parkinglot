@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :employees, except: [:destroy]
   resources :dashboard, only: [:index], to: 'dashboard#index'
+  get 'admit', to: 'parking#admit'
+  get 'exit', to: 'parking#exit'
+  get 'reports', to: 'parking#reports'
 end

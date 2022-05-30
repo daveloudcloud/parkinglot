@@ -11,12 +11,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class='flex flex-col min-h-screen '>
     <% if employee_signed_in? %> 
       <%= render "partials/header" %>
     <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <main class="flex-grow">
+      <%= yield %>
+    </main>
+    <% if employee_signed_in? %> 
+      <%= render "partials/footer" %>
+    <% end %>    
   </body>
 </html>
