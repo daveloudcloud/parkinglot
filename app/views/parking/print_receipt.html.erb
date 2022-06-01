@@ -1,0 +1,48 @@
+<div class="flex flex-col w-full justify-center items-center">
+  <div class='flex flex-col bg-blue-500 w-2/5 mt-36 text-center p-20 rounded-md shadow-2xl'>
+    <h1 class='text-4xl text-white'>Parking Lot App</h1> 
+    <h1 class='text-xl text-white'>Admittance</h1> 
+    
+    <div class='flex flex-col justify-center items-center w-100 mt-4 mb-2'>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Plate Number:</p>
+        <p class='w-1/2 text-white'><%= @customer.plate_number %></p>
+      </div>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Vehicle Type:</p>
+        <p class='w-1/2 text-white'><%= @customer.vehicle_type %></p>
+      </div>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Client Type:</p>
+        <p class='w-1/2 text-white'><%= @customer.client_type %></p>
+      </div>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Overnight Parking:</p>
+        <p class='w-1/2 text-white'><%= @customer.overnight %></p>
+      </div>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Time Admitted:</p>
+        <p class='w-1/2 text-white'><%= @customer.created_at.strftime("%I:%M:%S %Z %z") %></p>
+      </div>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Date Admitted:</p>
+        <p class='w-1/2 text-white'><%= @customer.created_at.to_date %></p>
+      </div>
+    </div>
+    <div class="flex justify-between items-center mt-8">
+      <span class='flex justify-center items-center mt-1'>
+        <h2 class='text-2xl text-white mr-3'>Available Slots:</h2> 
+        <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'>0</p>
+      </span>
+      <span>
+        <% @prev_url = request.referer %>
+        <% if @prev_url.include? "/admit" %>
+          <%= link_to "Print", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+        <% else %>
+          <%= link_to "Print Receipt", @customer, method: :delete, data: { confirm: "Printing Receipt Deletes Customer Data, Continue?" }, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
+        <% end %>
+        <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+      </span>
+    </div>    
+   </div>
+</div>
