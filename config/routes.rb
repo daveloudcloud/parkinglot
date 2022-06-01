@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'admit', to: 'parking#admit'
   get 'exit', to: 'parking#exit'
   get 'reports', to: 'parking#reports'
+  get 'search', to: 'parking#search'
+  get 'print_receipt', to: 'parking#print_receipt'
 end

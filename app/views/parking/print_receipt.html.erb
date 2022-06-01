@@ -1,12 +1,7 @@
-<% @prev_url = request.referer %>
 <div class="flex flex-col w-full justify-center items-center">
   <div class='flex flex-col bg-blue-500 w-2/5 mt-36 text-center p-20 rounded-md shadow-2xl'>
     <h1 class='text-4xl text-white'>Parking Lot App</h1> 
-    <% if @prev_url.include? "/admit" %>
-      <h1 class='text-xl text-white'>Admittance</h1> 
-    <% else %>
-      <h1 class='text-xl text-white'>Exit</h1> 
-    <% end %>
+    <h1 class='text-xl text-white'>Admittance</h1> 
     
     <div class='flex flex-col justify-center items-center w-100 mt-4 mb-2'>
       <div class='flex justify-between w-full'>
@@ -40,11 +35,11 @@
         <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'>0</p>
       </span>
       <span>
-        
+        <% @prev_url = request.referer %>
         <% if @prev_url.include? "/admit" %>
           <%= link_to "Print", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
         <% else %>
-          <%= link_to "Confirm Payment", print_receipt_url(:plate_number => @customer.plate_number), class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
+          <%= link_to "Print Receipt", @customer, method: :delete, data: { confirm: "Printing Receipt Deletes Customer Data, Continue?" }, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
         <% end %>
         <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
       </span>

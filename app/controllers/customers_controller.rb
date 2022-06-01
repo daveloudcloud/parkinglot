@@ -4,9 +4,6 @@ class CustomersController < ApplicationController
     @customer = Customer.new
   end
   
-  def exit
-  end  
-  
   def show
     @customer = Customer.find(params[:id])
   end
@@ -21,6 +18,13 @@ class CustomersController < ApplicationController
       render 'new'
     end
   end  
+
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    flash[:success] = "Confirmed Payment"
+    redirect_to dashboard_url
+  end
 
   private
 
