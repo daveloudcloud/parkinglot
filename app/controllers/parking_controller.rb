@@ -11,9 +11,10 @@ class ParkingController < ApplicationController
     @customer = Customer.find_by(plate_number: params[:search])
     if @customer
       redirect_to @customer
-    else
+    end
+    if @customer.nil? || @customer.blank?
       flash[:danger] = "Customer does not exist"
-      render 'exit'     
+      render 'exit'   
     end
     
   end
