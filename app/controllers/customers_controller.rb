@@ -6,14 +6,16 @@ class CustomersController < ApplicationController
   
   def show
     @customer = Customer.find(params[:id])
+    @parking = Parking.find(1)
+    @slots = @parking.slots.find(1)
+    @available_slots = @slots.total_space
   end
 
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
       # Handle a successful save.
-      flash[:info] = "Customer data saved."
-      redirect_to @customer
+      redirect_to @customer, notice: "Customer Data Parked"
     else
       render 'new'
     end
@@ -22,13 +24,12 @@ class CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
-    flash[:success] = "Confirmed Payment"
-    redirect_to dashboard_url
+    redirect_to dashboard_url, notice: "Confirmed Payment"
   end
 
   private
 
     def customer_params
-      params.require(:customer).permit(:plate_number, :vehicle_type, :client_type, :overnight)
+      params.require(:customer).permit(:plate_number, :vehicle_type, :client_type, :overnight, :employee_email, :employee_id, :admittance_date, :admittance_time)
     end  
 end
