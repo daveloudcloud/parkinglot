@@ -1,9 +1,14 @@
 <p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="alert bg-red-500"><%= alert %></p>
+<% @prev_url = request.referer %>
 <div class="flex flex-col w-full justify-center items-center">
   <div class='flex flex-col bg-blue-500 w-2/5 mt-36 text-center p-20 rounded-md shadow-2xl'>
     <h1 class='text-4xl text-white'>Parking Lot App</h1> 
-    <h1 class='text-xl text-white'>Admittance</h1> 
+    <% if @prev_url.include? "/admit" %>
+      <h1 class='text-xl text-white'>Admittance</h1> 
+    <% else %>
+      <h1 class='text-xl text-white'>Exit</h1> 
+    <% end %>
     
     <div class='flex flex-col justify-center items-center w-100 mt-4 mb-2'>
       <div class='flex justify-between w-full'>
@@ -31,11 +36,7 @@
         <p class='w-1/2 text-white'><%= @customer.created_at.to_date %></p>
       </div>
     </div>
-    <div class="flex justify-between items-center mt-8">
-      <span class='flex justify-center items-center mt-1'>
-        <h2 class='text-2xl text-white mr-3'>Available Slots:</h2> 
-        <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'>0</p>
-      </span>
+    <div class="flex justify-end items-center mt-8">
       <span>
         <% @prev_url = request.referer %>
         <% if @prev_url.include? "/admit" %>

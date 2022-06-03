@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_31_031155) do
+ActiveRecord::Schema.define(version: 2022_06_03_085143) do
 
   create_table "customers", force: :cascade do |t|
     t.string "plate_number"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 2022_05_31_031155) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "overnight"
     t.string "client_type"
+    t.string "employee_email"
+    t.integer "employee_id"
+    t.string "admittance_date"
+    t.string "admittance_time"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -48,6 +52,7 @@ ActiveRecord::Schema.define(version: 2022_05_31_031155) do
     t.integer "total_space"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "parking_id"
   end
 
 end
