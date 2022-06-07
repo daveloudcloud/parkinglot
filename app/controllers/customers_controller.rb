@@ -6,15 +6,18 @@ class CustomersController < ApplicationController
   
   def show
     @customer = Customer.find(params[:id])
-    @parking = Parking.find(1)
-    @slots = @parking.slots.find(1)
+    @parking = Parking.where(customer_id: @customer.id)
+    @slots = Slot.first
     @available_slots = @slots.total_space
   end
 
   def create
     @customer = Customer.new(customer_params)
+    @slot = Slot.first
+    @employee = current_employee
     if @customer.save
       # Handle a successful save.
+      @customer.parkings.create(customer_id: @customer.id, employee_id: @employee.id, name: "Parking-Lot A")
       redirect_to @customer, notice: "Customer Data Parked"
     else
       render 'new'
@@ -23,7 +26,9 @@ class CustomersController < ApplicationController
 
   def destroy
     @customer = Customer.find(params[:id])
+    @parking = Parking.find_by(customer_id: @customer.id)
     @customer.destroy
+    @parking.destroy
     redirect_to dashboard_url, notice: "Confirmed Payment"
   end
 

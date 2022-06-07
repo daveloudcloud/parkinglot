@@ -3,8 +3,7 @@ class ParkingController < ApplicationController
   def admit
     @customer = Customer.new
     @employee = current_employee
-    @parking = Parking.find(1)
-    @slots = @parking.slots.find(1)
+    @slots = Slot.first
     @available_slots = @slots.total_space
   end
   
