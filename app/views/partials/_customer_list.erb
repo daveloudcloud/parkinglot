@@ -1,0 +1,11 @@
+  <% @customers.each do |cu| %>
+    <div class='flex flex-col justify-between w-full my-4'>
+        <div class='flex justify-between w-full'>
+          <p class='w-1/2 text-white'>Plate Number:</p>
+          <div class='w-1/2 text-white'>
+            <%= cu.plate_number %>          
+            <%= link_to "View", @customer, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+          </div>
+        </div>
+    </div>
+  <% end %>

@@ -11,3 +11,6 @@
 }
 
 */
+.navbar-hide {
+  display: none !important;
+}
