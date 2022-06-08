@@ -4,7 +4,12 @@
     <div class='flex flex-col justify-center items-center my-8'>
       <%= link_to "Park Now", admit_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>
       <%= link_to "Exit Parking", exit_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>
-      <%= link_to "Reports", reports_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>
+      <%= link_to "Personal Reports", reports_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>
+      <% if @employee.admin %>
+        <%= link_to "Company Reports", reports_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>  
+        <%= link_to "Create New Employee", reports_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>  
+      <% end %>
+      
     </div>
     <span class='flex justify-center items-center mt-1'>
       <h2 class='text-2xl text-white mr-3'>Available Slots:</h2> 
