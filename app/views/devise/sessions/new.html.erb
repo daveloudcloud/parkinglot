@@ -1,6 +1,7 @@
 <div class='flex justify-center content-center w-100 h-full'>
   <div class='flex flex-col justify-center content-center'>
-    <h2 class='text-2xl text-center pt-44 pb-12'>EMPLOYEE LOGIN</h2>
+    <h1 class='text-4xl text-center pt-44 '>Parking Lot App</h1>
+    <h2 class='text-2xl text-center text-gray-600 pb-12'>EMPLOYEE LOGIN</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -25,8 +26,8 @@
       </div>
     <% end %>
 
-    <div class='flex flex-row w-100 justify-between pt-4'>
+    <%# <div class='flex flex-row w-100 justify-between pt-4'>
       <%= render "devise/shared/links" %>
-    </div>
+    <!---</div> %> -->
   </div>
 </div>

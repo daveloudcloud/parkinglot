@@ -5,9 +5,10 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  resources :employees, except: [:destroy]
+  resources :employees
   resources :customers
   resources :slots
+  get 'create_new_employee', to: 'employees#new_employee'
   get 'dashboard', to: 'dashboard#index'
   get 'admit', to: 'parking#admit'
   get 'exit', to: 'parking#exit'
