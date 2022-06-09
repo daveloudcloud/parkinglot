@@ -4,5 +4,6 @@ class DashboardController < ApplicationController
   def index
     @slots = Slot.first
     @available_slots = @slots.total_space
+    @employee = current_employee
   end
 end
