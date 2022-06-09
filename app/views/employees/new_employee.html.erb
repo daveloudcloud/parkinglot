@@ -1,0 +1,40 @@
+<div class='flex justify-center content-center w-100 h-full'>
+  <div class='flex flex-col justify-center items-center w-1/2'>
+    <h2 class='text-2xl text-center pt-44 pb-12'>New Employee</h2>
+
+    <%= form_with model: @employee, url: '/employees', method: :post, class: 'flex flex-col items-center w-1/2' do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field py-4">
+        <%= f.label(:admin, "Admin?") %>
+        <%= f.check_box(:admin) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions mt-4 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <%= f.submit "Create" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
