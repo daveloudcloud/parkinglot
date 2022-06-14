@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
       @customer.parkings.create(customer_id: @customer.id, employee_id: @employee.id, name: "Parking-Lot A")
       redirect_to @customer, notice: "Customer Data Parked"
     else
-      render 'new'
+      redirect_to admit_path, notice: "Plate number and Client type cant be blank"
     end
   end  
 
