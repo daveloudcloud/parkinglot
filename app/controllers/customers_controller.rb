@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
     @parking = Parking.find_by(customer_id: @customer.id)
     @customer.destroy
     @parking.destroy
-    redirect_to dashboard_url, notice: "Confirmed Payment"
+    redirect_to company_reports_url, notice: "Employee Data Removed"
   end
 
   private

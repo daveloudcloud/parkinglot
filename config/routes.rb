@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :customers
   resources :slots
+  resources :reports
   get 'create_new_employee', to: 'employees#new_employee'
   get 'dashboard', to: 'dashboard#index'
   get 'admit', to: 'parking#admit'
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   get 'search', to: 'parking#search'
   get 'print_receipt', to: 'parking#print_receipt'
   get 'reports', to: 'reports#show'
+  get 'company_reports', to: 'reports#company_reports'
 end
