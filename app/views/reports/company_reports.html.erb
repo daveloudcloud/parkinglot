@@ -1,0 +1,104 @@
+<% 
+  @admin = 0
+  @employee = 0
+  @employees.each do |em|
+    if em.admin?
+      @admin = @admin + 1
+    else
+      @employee = @employee + 1
+    end
+  end
+%>
+<div class="flex flex-col w-full justify-center items-center mb-8">
+  <div class='flex flex-col bg-blue-500 w-2/5 mt-20 text-center p-20 rounded-md shadow-2xl'>
+    <h1 class='text-4xl text-white'>Parking Lot App</h1> 
+    <h1 class='text-xl text-white'>Company Report</h1> 
+    
+    <div class='flex flex-col justify-center items-center w-100 mt-4 mb-2'>
+      <div class='flex flex-col'>
+        <h1 class='text-white pt-4'>Admin</h1>
+        <h2 class='flex items-center gap-4 text-white pb-6'>Number of Employees: <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'><%= @admin %></p></h2>
+      </div>
+      <% @employees.each do |em| %>
+        <% if em.admin? %>
+          <div class='flex justify-between w-full'>
+            <p class='w-1/2 text-white'>Employee ID:</p>
+            <p class='w-1/2 text-white'><%= em.id %></p>
+          </div>  
+          <div class='flex justify-between w-full'>
+            <p class='w-1/2 text-white'>Employee Name:</p>
+            <p class='w-1/2 text-white'><%= em.name %></p>
+          </div>  
+          <div class='flex justify-between w-full'>
+            <p class='w-1/2 text-white'>Employee Email:</p>
+            <p class='w-1/2 text-white'><%= em.email %></p>
+          </div>          
+          <div class='flex justify-between w-full pb-4'>
+            <p class='w-1/2 text-white'>Date Started:</p>
+            <p class='w-1/2 text-white'><%= em.created_at %></p>
+          </div>          
+        <% end %>
+      <% end %>    
+      <div class='flex flex-col'>
+        <h1 class='text-white pt-4'>List of Employees</h1>
+        <h2 class='flex items-center gap-4 text-white pb-6'>Number of Employees: <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'><%= @employee %></p></h2>
+      </div>
+      <% @employees.each do |em| %>
+        <% if em.admin != true %>
+          <div class='flex justify-between w-full'>
+            <p class='w-1/2 text-white'>Employee ID:</p>
+            <p class='w-1/2 text-white'><%= em.id %></p>
+          </div>  
+          <div class='flex justify-between w-full'>
+            <p class='w-1/2 text-white'>Employee Name:</p>
+            <p class='w-1/2 text-white'><%= em.name %></p>
+          </div>  
+          <div class='flex justify-between w-full'>
+            <p class='w-1/2 text-white'>Employee Email:</p>
+            <p class='w-1/2 text-white'><%= em.email %></p>
+          </div>          
+          <div class='flex justify-between w-full pb-4'>
+            <p class='w-1/2 text-white'>Date Started:</p>
+            <p class='w-1/2 text-white'><%= em.created_at %></p>
+          </div>          
+          <div class='flex justify-end w-full pb-4 gap-2'>
+            <%= link_to "Edit", em, class: "bg-green-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
+            <%= link_to "Delete", em, method: :delete, data: { confirm: "Delete Employee Details, Continue?" }, class: "bg-red-500 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>  
+          </div> 
+        <% end %>                 
+      <% end %>
+      <div class='flex flex-col mt-6'>
+        <h1 class='text-white pt-4'>List of Customers</h1>
+        <h2 class='flex items-center gap-4 text-white pb-6'>Number of Customers: <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'><%= @customers.size %></p></h2>
+      </div>      
+      <% @customers.each do |cu| %>
+        <div class='flex justify-between w-full'>
+          <p class='w-1/2 text-white'>Customer ID:</p>
+          <p class='w-1/2 text-white'><%= cu.id %></p>
+        </div>  
+        <div class='flex justify-between w-full'>
+          <p class='w-1/2 text-white'>Plate Number:</p>
+          <p class='w-1/2 text-white'><%= cu.plate_number %></p>
+        </div>  
+        <div class='flex justify-between w-full'>
+          <p class='w-1/2 text-white'>Admitting Employee Email:</p>
+          <p class='w-1/2 text-white'><%= cu.employee_email %></p>
+        </div>          
+        <div class='flex justify-between w-full pb-4'>
+          <p class='w-1/2 text-white'>Date Admitted:</p>
+          <p class='w-1/2 text-white'><%= cu.admittance_date %></p>
+        </div>       
+        <div class='flex justify-end w-full pb-4 gap-2'>
+          <%= link_to "View", cu, class: "bg-blue-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
+          <%= link_to "Delete", cu, method: :delete, data: { confirm: "Delete Customer Data, Continue?" }, class: "bg-red-500 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>  
+        </div>            
+      <% end %>      
+    </div>
+    
+    <div class="flex justify-end items-center mt-8">
+      <%= link_to "Back To Dashboard", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+    </div>    
+   
+   </div>
+</div>
+

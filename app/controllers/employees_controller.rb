@@ -18,6 +18,12 @@ class EmployeesController < ApplicationController
     end
   end    
 
+  def destroy
+    @employee = Employee.find(params[:id])    
+    @employee.destroy
+    redirect_to company_reports_url, notice: "Employee Data Removed"
+  end
+
   private
 
     def employee_params

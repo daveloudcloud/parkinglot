@@ -6,7 +6,7 @@
       <%= link_to "Exit Parking", exit_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>
       <%= link_to "Personal Reports", reports_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>
       <% if @employee.admin %>
-        <%= link_to "Company Reports", reports_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>  
+        <%= link_to "Company Reports", company_reports_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>  
         <%= link_to "Create New Employee", create_new_employee_path, class: "p-2 border-2 border-white text-white w-48 rounded-md mb-2 shadow-xl" %>  
       <% end %>
       

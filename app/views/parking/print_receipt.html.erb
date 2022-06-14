@@ -42,7 +42,7 @@
         <% if @prev_url.include? "/admit" %>
           <%= link_to "Print", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
         <% else %>
-          <%= link_to "Print Receipt", @customer, method: :delete, data: { confirm: "Printing Receipt Deletes Customer Data, Continue?" }, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
+          <%= link_to "Print Receipt", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
         <% end %>
         <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
       </span>
