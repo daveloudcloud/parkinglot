@@ -13,11 +13,12 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    @slot = Slot.first
     @employee = current_employee
     if @customer.save
       # Handle a successful save.
       @customer.parkings.create(customer_id: @customer.id, employee_id: @employee.id, name: "Parking-Lot A")
+      starting_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+      @customer.update(start_time: starting_time)
       redirect_to @customer, notice: "Customer Data Parked"
     else
       redirect_to admit_path, notice: "Plate number and Client type cant be blank"

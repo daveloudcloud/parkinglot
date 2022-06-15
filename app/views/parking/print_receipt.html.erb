@@ -1,3 +1,11 @@
+<% 
+  time = @customer.end_time - @customer.start_time
+  @hours =  time / 3600
+  @minutes = time / 60 % 60
+  @seconds =  time % 60
+
+%>
+
 <p class="notice"><%= notice %></p>
 <p class="alert bg-red-500"><%= alert %></p>
 <% @prev_url = request.referer %>
@@ -28,13 +36,25 @@
         <p class='w-1/2 text-white'><%= @customer.overnight %></p>
       </div>
       <div class='flex justify-between w-full'>
-        <p class='w-1/2 text-white'>Time Admitted:</p>
+        <p class='w-1/2 text-white'>Parking Start Time:</p>
         <p class='w-1/2 text-white'><%= @customer.created_at.strftime("%I:%M:%S %Z %z") %></p>
       </div>
       <div class='flex justify-between w-full'>
         <p class='w-1/2 text-white'>Date Admitted:</p>
         <p class='w-1/2 text-white'><%= @customer.created_at.to_date %></p>
       </div>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Parking Stop Time:</p>
+        <p class='w-1/2 text-white'><%= @customer.updated_at.strftime("%I:%M:%S %Z %z") %></p>
+      </div>
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Date Exited:</p>
+        <p class='w-1/2 text-white'><%= @customer.updated_at.to_date %></p>
+      </div>      
+      <div class='flex justify-between w-full'>
+        <p class='w-1/2 text-white'>Elapsed Time:</p>
+        <p class='w-1/2 text-white'><%= @hours %> hours <%= @minutes %> minutes <%= @seconds %> seconds</p>
+      </div>   
     </div>
     <div class="flex justify-end items-center mt-8">
       <span>
@@ -42,7 +62,7 @@
         <% if @prev_url.include? "/admit" %>
           <%= link_to "Print", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
         <% else %>
-          <%= link_to "Print Receipt", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
+          <%= link_to "Confirm Payment", confirm_payment_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
         <% end %>
         <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
       </span>
