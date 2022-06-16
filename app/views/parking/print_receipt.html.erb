@@ -25,7 +25,13 @@
       </div>
       <div class='flex justify-between w-full'>
         <p class='w-1/2 text-white'>Overnight Parking:</p>
-        <p class='w-1/2 text-white'><%= "Yes" if @customer.overnight? %></p>
+        <p class='w-1/2 text-white'>
+          <% if @customer.overnight %>
+          Yes
+          <% else %>
+          No
+          <% end %>
+        </p>
       </div>
       <div class='flex justify-between w-full'>
         <p class='w-1/2 text-white'>Parking Start Time:</p>
