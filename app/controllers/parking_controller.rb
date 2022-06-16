@@ -40,14 +40,14 @@ class ParkingController < ApplicationController
     @balance = 0
 
     if @elapsed_time < 10800
-      @customer.update(balance: @balance + 35.00)
-    # else
-      # (10800..57600)
+      if @customer.overnight
+        @customer.update(balance: @balance + 185.00)
+      else
+        @customer.update(balance: @balance + 35.00)
+      end
     end
 
-    if @customer.overnight
-      @customer.update(balance: @balance + 150.00)
-    end
+
     # iteration = 10800
     # total_hours = 57600
     # while iteration < total_hours do
