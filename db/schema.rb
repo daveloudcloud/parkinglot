@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_14_130114) do
+ActiveRecord::Schema.define(version: 2022_06_15_092838) do
+
+  create_table "archives", force: :cascade do |t|
+    t.string "plate_number"
+    t.string "vehicle_type"
+    t.string "client_type"
+    t.boolean "overnight"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "employee_email"
+    t.integer "employee_id"
+    t.string "admittance_time"
+    t.string "admittance_date"
+    t.string "exit_date"
+    t.string "exit_time"
+    t.integer "amount_paid"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "plate_number"
@@ -26,6 +42,9 @@ ActiveRecord::Schema.define(version: 2022_06_14_130114) do
     t.string "admittance_time"
     t.integer "start_time"
     t.integer "end_time"
+    t.integer "balance"
+    t.string "exit_time"
+    t.string "exit_date"
   end
 
   create_table "employees", force: :cascade do |t|
