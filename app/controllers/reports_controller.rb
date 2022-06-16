@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
 
-  def show
+  def personal_reports
     @employee = current_employee
     @customers = Customer.where(employee_id: @employee.id)
   end

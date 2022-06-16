@@ -23,7 +23,7 @@
       </div>
       <div class='flex justify-between w-full'>
         <p class='w-1/2 text-white'>Overnight Parking:</p>
-        <p class='w-1/2 text-white'><%= @customer.overnight %></p>
+        <p class='w-1/2 text-white'><%= "Yes" if @customer.overnight? %></p>
       </div>
       <div class='flex justify-between w-full'>
         <p class='w-1/2 text-white'>Time Admitted:</p>
@@ -52,7 +52,7 @@
           </div>
         <% else %>
           <div>
-            <%= link_to "Confirm Payment", print_receipt_url(:plate_number => @customer.plate_number), class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
+            <%= link_to "Stop Park Timer", print_receipt_url(:plate_number => @customer.plate_number), class: "bg-red-400 p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
           </div>
         <% end %>
         <div>

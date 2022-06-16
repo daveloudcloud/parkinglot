@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   resources :employees
   resources :customers
   resources :slots
-  resources :reports
   get 'create_new_employee', to: 'employees#new_employee'
   get 'dashboard', to: 'dashboard#index'
   get 'admit', to: 'parking#admit'
   get 'exit', to: 'parking#exit'
   get 'search', to: 'parking#search'
   get 'print_receipt', to: 'parking#print_receipt'
-  get 'reports', to: 'reports#show'
+  get 'personal_reports', to: 'reports#personal_reports'
   get 'company_reports', to: 'reports#company_reports'
+  get 'confirm_payment', to: 'parking#update_slot'
 end
