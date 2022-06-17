@@ -56,10 +56,14 @@
             <%= link_to "Stop Park Timer", print_receipt_url(:plate_number => @customer.plate_number), class: "bg-red-400 p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
           </div>
           <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
-        <% else %>  
+        <% elsif @prev_url.include? "/personal_reports" %>  
           <div>
-            <%= link_to "Back", personal_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+            <%= link_to "Back to Personal Reports", personal_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
           </div>  
+        <% elsif @prev_url.include? "/company_reports" %>  
+          <div>
+            <%= link_to "Back to Company Reports", company_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+          </div>            
         <% end %>
 
       </div>
