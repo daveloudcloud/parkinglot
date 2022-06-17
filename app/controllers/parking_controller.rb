@@ -38,7 +38,6 @@ class ParkingController < ApplicationController
     @seconds =  @elapsed_time % 60
 
     @balance = 0
-
     if @elapsed_time < 10800
       if @customer.overnight
         @customer.update(balance: @balance + 185.00)
@@ -48,17 +47,28 @@ class ParkingController < ApplicationController
     end
 
 
-    # iteration = 10800
-    # total_hours = 57600
-    # while iteration < total_hours do
-    #   @iteration = iteration  
-    # end
-    
-
-
   end
 
   def update_slot
+    @customer = Customer.find_by(plate_number: params[:plate_number])
+    
+    Archive.create(
+      id: @customer.id, 
+      plate_number: @customer.plate_number, 
+      vehicle_type: @customer.vehicle_type, 
+      client_type: @customer.client_type,
+      overnight: @customer.overnight,
+      employee_email: @customer.employee_email,
+      employee_id: @customer.employee_id,
+      admittance_time: @customer.admittance_time,
+      admittance_date: @customer.admittance_date,
+      exit_time: @customer.exit_time,
+      exit_date: @customer.exit_date,
+      amount_paid: @customer.balance
+    )
+
+    @customer.destroy
+
     slot = Slot.find(1)
     total_space = slot.total_space
     Slot.update(total_space: total_space + 1)

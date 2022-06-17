@@ -8,5 +8,6 @@ class ReportsController < ApplicationController
   def company_reports
     @employees = Employee.all
     @customers = Customer.all
+    @archived = Archive.all
   end
 end

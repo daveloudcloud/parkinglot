@@ -35,6 +35,8 @@
           <p class='w-1/2 text-white'><%= @customers.size %></p>
         </div>        
         <%= render "partials/customer_list" %>  
+      <% else %>
+        <p class='text-white'>No Customer Data.</p>
       <% end %>
     </div>    
     <div class="flex justify-end items-center mt-8">

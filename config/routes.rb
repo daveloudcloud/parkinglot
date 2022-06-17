@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :employees
   resources :customers
+  resources :archives
   resources :slots
   get 'create_new_employee', to: 'employees#new_employee'
   get 'dashboard', to: 'dashboard#index'
