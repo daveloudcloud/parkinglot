@@ -50,14 +50,18 @@
               <%= form.submit "Print", class: "p-2 border-2 border-white text-white rounded-md shadow-xl" %>
             <% end %>
           </div>
-        <% else %>
+          <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+        <% elsif @prev_url.include? "/exit" %>
           <div>
             <%= link_to "Stop Park Timer", print_receipt_url(:plate_number => @customer.plate_number), class: "bg-red-400 p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>  
           </div>
-        <% end %>
-        <div>
           <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
-        </div>
+        <% else %>  
+          <div>
+            <%= link_to "Back", personal_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+          </div>  
+        <% end %>
+
       </div>
     </div>    
    </div>
