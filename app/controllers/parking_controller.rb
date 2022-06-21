@@ -27,7 +27,7 @@ class ParkingController < ApplicationController
     @start_time = @customer.start_time
     @end_time = @customer.end_time
     
-    # @end_time = @end_time + 45000
+    # @end_time = @end_time + 90000
 
     @elapsed_time = @end_time - @start_time
 
@@ -36,7 +36,6 @@ class ParkingController < ApplicationController
     @seconds =  @elapsed_time % 60
     
     Customer.compute_balance(@customer, @elapsed_time, @start_time, @end_time)
-
 
   end
 

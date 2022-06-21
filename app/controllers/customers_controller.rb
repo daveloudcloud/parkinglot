@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
     if @customer.save
       # Handle a successful save.
       @customer.parkings.create(customer_id: @customer.id, employee_id: @employee.id, name: "Parking-Lot A")
-      starting_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+      starting_time = Time.now.to_i - Date.today.to_time.to_i
       @customer.update(start_time: starting_time)
       redirect_to @customer, notice: "Customer Data Parked"
     else
@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
     @parking = Parking.find_by(customer_id: @customer.id)
     @customer.destroy
     @parking.destroy
-    redirect_to company_reports_url, notice: "Customer Data Removed"
+    redirect_to company_reports_url, notice: "Employee Data Removed"
   end
 
   private
