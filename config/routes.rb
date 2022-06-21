@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get 'print_receipt', to: 'parking#print_receipt'
   get 'personal_reports', to: 'reports#personal_reports'
   get 'company_reports', to: 'reports#company_reports'
+  get 'income_reports', to: 'reports#income_reports'
   get 'confirm_payment', to: 'parking#update_slot'
 end

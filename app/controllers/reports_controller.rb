@@ -10,4 +10,7 @@ class ReportsController < ApplicationController
     @customers = Customer.all
     @archived = Archive.all
   end
+
+  def income_reports
+  end
 end
