@@ -27,11 +27,9 @@ class ParkingController < ApplicationController
     @start_time = @customer.start_time
     @end_time = @customer.end_time
     
-    @end_time = @end_time + 45000
+    # @end_time = @end_time + 45000
 
     @elapsed_time = @end_time - @start_time
-  
-    
 
     @hours =  @elapsed_time / 3600
     @minutes = @elapsed_time / 60 % 60
@@ -46,7 +44,7 @@ class ParkingController < ApplicationController
     customer = Customer.find_by(plate_number: params[:plate_number])
     Archive.create_archived_customer(customer)
     customer.destroy
-    Slot.decrease_slot
-    redirect_to dashboard_path, notice: "Parking Slot now vacant"
+    Slot.increase_slot
+    redirect_to dashboard_url, notice: "Parking Slot now vacant"
   end
 end
