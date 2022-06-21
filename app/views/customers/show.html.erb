@@ -46,9 +46,7 @@
       <div class='flex gap-2 items-center'>
         <% if @prev_url.include? "/admit" %>
           <div>
-            <%= form_with url: slot_path, model: @slot, method: :patch, local: true do |form| %>
-              <%= form.submit "Print", class: "p-2 border-2 border-white text-white rounded-md shadow-xl" %>
-            <% end %>
+          <%= link_to "Print", confirm_admittance_url, class: "p-2 border-2 border-white text-white rounded-md shadow-xl" %>  
           </div>
           <%= link_to "Cancel", dashboard_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
         <% elsif @prev_url.include? "/exit" %>
