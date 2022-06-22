@@ -51,9 +51,20 @@
       </div>           
     </div>
     <div class="flex justify-end items-center mt-8">
-      <div class='flex gap-2 items-center'>
-        <%= link_to "Back to Company Reports", company_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
-      </div>
+      <% if @prev_url.include? "/daily_reports" %>
+        <div>
+          <%= link_to "Back to Daily Reports", daily_reports_url, class: "p-2 border-2 border-white text-white rounded-md shadow-xl" %>  
+        </div> 
+      <% elsif @prev_url.include? "/monthly_reports" %>
+        <div>
+          <%= link_to "Back to Monthly Reports", monthly_reports_url, class: "p-2 border-2 border-white text-white rounded-md shadow-xl" %>  
+        </div>       
+      <% else %>   
+        <div class='flex justify-end items-center mt-8'>
+          <%= link_to "Back to Company Reports", company_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+        </div>      
+      <% end %>
+
     </div>    
    </div>
 </div>

@@ -61,7 +61,11 @@
         <% elsif @prev_url.include? "/company_reports" %>  
           <div>
             <%= link_to "Back to Company Reports", company_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
-          </div>            
+          </div>    
+        <% elsif @prev_url.include? "/daily_reports" %>  
+          <div>
+            <%= link_to "Back to Daily Reports", daily_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+          </div>                    
         <% end %>
 
       </div>

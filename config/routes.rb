@@ -19,5 +19,8 @@ Rails.application.routes.draw do
   get 'personal_reports', to: 'reports#personal_reports'
   get 'company_reports', to: 'reports#company_reports'
   get 'income_reports', to: 'reports#income_reports'
+  get 'daily_reports', to: 'reports#daily_reports'
+  get 'monthly_reports', to: 'reports#monthly_reports'
+  get 'yearly_reports', to: 'reports#yearly_reports'
   get 'confirm_payment', to: 'parking#update_slot'
 end
