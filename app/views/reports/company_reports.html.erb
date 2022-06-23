@@ -65,7 +65,7 @@
               <p class='w-1/2 text-white'><%= em.created_at %></p>
             </div>          
             <div class='flex justify-end w-full pb-4 gap-2'>
-              <%= link_to "Edit", em, class: "bg-green-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
+              <%= link_to "Edit", edit_employee_url(em), class: "bg-green-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
               <%= link_to "Delete", em, method: :delete, data: { confirm: "Delete Employee Details, Continue?" }, class: "bg-red-500 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>  
             </div> 
           <% end %>                 

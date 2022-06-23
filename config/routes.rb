@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  resources :employees
+  resources :employees, only: [:show, :edit, :update]
   resources :customers
   resources :archives
   resources :slots
