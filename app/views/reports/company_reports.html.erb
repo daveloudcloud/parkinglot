@@ -75,50 +75,62 @@
         <div class='flex flex-col mt-6'>
           <h1 class='text-white pt-4'>List of Active Customers</h1>
           <h2 class='flex items-center gap-4 text-white pb-6'>Number of Customers: <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'><%= @customers.size %></p></h2>
-        </div>      
-        <% @customers.each do |cu| %>
-          <div class='flex justify-between w-full'>
-            <p class='w-1/2 text-white'>Customer ID:</p>
-            <p class='w-1/2 text-white'><%= cu.id %></p>
-          </div>  
-          <div class='flex justify-between w-full'>
-            <p class='w-1/2 text-white'>Plate Number:</p>
-            <p class='w-1/2 text-white'><%= cu.plate_number %></p>
-          </div>  
-          <div class='flex justify-between w-full'>
-            <p class='w-1/2 text-white'>Admitting Employee Email:</p>
-            <p class='w-1/2 text-white'><%= cu.employee_email %></p>
-          </div>          
-          <div class='flex justify-end w-full py-4 gap-2'>
-            <%= link_to "View", cu, class: "bg-blue-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
-            <%= link_to "Delete", cu, method: :delete, data: { confirm: "Delete Customer Data, Continue?" }, class: "bg-red-500 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>  
-          </div>            
-        <% end %>      
+        </div>  
+        <% if @customers.empty? %>    
+          <p class='flex justify-center items-center my-4 h-4 p-4 bg-white text-red-600 rounded-full'>No Active Customer Data.</p>
+        <% else %>
+          <div class='w-full h-80 overflow-y-auto'>
+            <% @customers.each do |cu| %>
+              <div class='flex justify-between w-full'>
+                <p class='w-1/2 text-white'>Customer ID:</p>
+                <p class='w-1/2 text-white'><%= cu.id %></p>
+              </div>  
+              <div class='flex justify-between w-full'>
+                <p class='w-1/2 text-white'>Plate Number:</p>
+                <p class='w-1/2 text-white'><%= cu.plate_number %></p>
+              </div>  
+              <div class='flex justify-between w-full'>
+                <p class='w-1/2 text-white'>Admitting Employee Email:</p>
+                <p class='w-1/2 text-white'><%= cu.employee_email %></p>
+              </div>          
+              <div class='flex justify-center w-full py-4 gap-2'>
+                <%= link_to "View", cu, class: "bg-blue-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
+                <%= link_to "Delete", cu, method: :delete, data: { confirm: "Delete Customer Data, Continue?" }, class: "bg-red-500 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>  
+              </div>            
+            <% end %>      
+          </div>
+        <% end %>
       </div>
       <div class='flex flex-col justify-center items-center w-full border border-white p-3 rounded-xl mt-4'>
         <div class='flex flex-col mt-6'>
           <h1 class='text-white pt-4'>Archived Customers</h1>
           <h2 class='flex items-center gap-4 text-white pb-6'>Number of Archived Customers: <p class='flex justify-center items-center w-4 h-4 p-4 bg-white text-red-600 rounded-full'><%= @archived.size %></p></h2>
-        </div>      
-        <% @archived.each do |ar| %>
-          <div class='flex justify-between w-full'>
-            <p class='w-1/2 text-white'>Customer ID:</p>
-            <p class='w-1/2 text-white'><%= ar.id %></p>
+        </div>    
+        <% if @archived.empty? %>    
+          <p class='flex justify-center items-center my-4 h-4 p-4 bg-white text-red-600 rounded-full'>No Active Customer Data.</p>
+        <% else %>        
+          <div class='w-full h-80 overflow-y-auto'>
+            <% @archived.each do |ar| %>
+              <div class='flex justify-between w-full'>
+                <p class='w-1/2 text-white'>Customer ID:</p>
+                <p class='w-1/2 text-white'><%= ar.id %></p>
+              </div>  
+              <div class='flex justify-between w-full'>
+                <p class='w-1/2 text-white'>Plate Number:</p>
+                <p class='w-1/2 text-white'><%= ar.plate_number %></p>
+              </div>  
+              <div class='flex justify-between w-full'>
+                <p class='w-1/2 text-white'>Admitting Employee Email:</p>
+                <p class='w-1/2 text-white'><%= ar.employee_email %></p>
+              </div>          
+    
+              <div class='flex justify-center w-full py-4 gap-2'>
+                <%= link_to "View", ar, class: "bg-blue-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
+                <%= link_to "Delete", ar, method: :delete, data: { confirm: "Delete Customer Data, Continue?" }, class: "bg-red-500 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>  
+              </div>            
+            <% end %>      
           </div>  
-          <div class='flex justify-between w-full'>
-            <p class='w-1/2 text-white'>Plate Number:</p>
-            <p class='w-1/2 text-white'><%= ar.plate_number %></p>
-          </div>  
-          <div class='flex justify-between w-full'>
-            <p class='w-1/2 text-white'>Admitting Employee Email:</p>
-            <p class='w-1/2 text-white'><%= ar.employee_email %></p>
-          </div>          
- 
-          <div class='flex justify-end w-full py-4 gap-2'>
-            <%= link_to "View", ar, class: "bg-blue-400 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>
-            <%= link_to "Delete", ar, method: :delete, data: { confirm: "Delete Customer Data, Continue?" }, class: "bg-red-500 p-2 border-2 border-white text-white w-28 rounded-md shadow-xl" %>  
-          </div>            
-        <% end %>      
+        <% end %>
       </div>
     </div>    
     
