@@ -58,7 +58,11 @@
       <% elsif @prev_url.include? "/monthly_reports" %>
         <div>
           <%= link_to "Back to Monthly Reports", monthly_reports_url, class: "p-2 border-2 border-white text-white rounded-md shadow-xl" %>  
-        </div>       
+        </div>   
+      <% elsif @prev_url.include? "/personal_reports" %>  
+        <div>
+          <%= link_to "Back to Personal Reports", personal_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>
+        </div>              
       <% else %>   
         <div class='flex justify-end items-center mt-8'>
           <%= link_to "Back to Company Reports", company_reports_url, class: "p-2 border-2 border-white text-white w-48 rounded-md shadow-xl" %>

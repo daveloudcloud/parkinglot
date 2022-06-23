@@ -1,5 +1,6 @@
 class Archive < ApplicationRecord
   scope :this_month, -> { where(created_at: Date.today.all_month) }
+  scope :this_year, -> { where(created_at: Date.today.year) }
   def self.create_archived_customer(customer)
     Archive.create(
       id: customer.id, 
