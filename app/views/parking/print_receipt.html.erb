@@ -33,13 +33,13 @@
           <% end %>
         </p>
       </div>
-      <div class='flex justify-between w-full'>
+      <div class='flex justify-between w-full mt-5'>
         <p class='w-1/2 text-white'>Parking Start Time:</p>
         <p class='w-1/2 text-white'><%= @customer.admittance_time %></p>
       </div>
       <div class='flex justify-between w-full'>
         <p class='w-1/2 text-white'>Date Admitted:</p>
-        <p class='w-1/2 text-white'><%= @customer.admittance_date.to_date %></p>
+        <p class='w-1/2 text-white'><%= @customer.admittance_date %></p>
       </div>
       <div class='flex justify-between w-full'>
         <p class='w-1/2 text-white'>Parking Stop Time:</p>
@@ -49,7 +49,7 @@
         <p class='w-1/2 text-white'>Date Exited:</p>
         <p class='w-1/2 text-white'><%= @customer.exit_date %></p>
       </div>      
-      <div class='flex justify-between w-full'>
+      <div class='flex justify-between w-full mt-5'>
         <p class='w-1/2 text-white'>Elapsed Time:</p>
         <p class='w-1/2 text-white'><%= @hours %> hours <%= @minutes %> minutes <%= @seconds %> seconds</p>
       </div>   
@@ -58,7 +58,7 @@
         <p class='w-1/2 text-white'>Php <%= @customer.balance %>.00</p>
       </div>         
     </div>
-    <div class="flex justify-end items-center mt-8">
+    <div class="flex justify-end items-center mt-10">
       <span>
         <% @prev_url = request.referer %>
         <% if @prev_url.include? "/admit" %>

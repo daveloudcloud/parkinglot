@@ -36,6 +36,18 @@ class ReportsController < ApplicationController
       balance = balance + ar.amount_paid
     end
 
-    @total_income_today = balance
+    @total_income_this_month = balance
   end
+
+  def yearly_reports
+    @archived_this_year = Archive.this_month
+
+    balance = 0
+
+    @archived_this_year.each do |ar|
+      balance = balance + ar.amount_paid
+    end
+
+    @total_income_this_year = balance
+  end  
 end

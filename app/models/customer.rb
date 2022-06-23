@@ -7,15 +7,13 @@ class Customer < ApplicationRecord
 
   def self.get_end_time(customer)
     if customer.end_time.nil?
-      customer.update(exit_time: Time.now.strftime("%I:%M"), exit_date: DateTime.current.to_date)
       ending_time = Time.now.to_i - Date.today.to_time.to_i
+      customer.update(exit_time: Time.now.strftime("%I:%M %p"), exit_date: Date.today.to_s(:long))
       customer.update(end_time: ending_time)
     end
   end
 
   def self.compute_balance(customer, elapsed_time, start_time, end_time)
-    
-    
     
     if elapsed_time <= 86400
       balance = 35

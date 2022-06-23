@@ -81,7 +81,7 @@
                   <p><%= form.label :admittance_time, "Admittance Time:", class: "w-full" %></p>
                 </div>
                 <div class='flex justify-start w-1/2 text-black'>
-                  <%= form.text_field :admittance_time, value: Time.now.strftime("%I:%M"), readonly: true, class: "rounded-xl bg-gray-200" %>
+                  <%= form.text_field :admittance_time, value: Time.now.strftime("%I:%M %p"), readonly: true, class: "rounded-xl bg-gray-200" %>
                 </div>
               </div>
             </div>
